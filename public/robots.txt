@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Interdire l'accès aux dossiers sensibles
+Disallow: /dist/map/
+Disallow: /.env
+Disallow: /.htaccess
+
+# Sitemap
+Sitemap: https://audit-energetique-remois.fr/sitemap.xml
+
+# Délai entre les requêtes
+Crawl-delay: 10

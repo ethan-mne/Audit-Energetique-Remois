@@ -1,0 +1,335 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+// Articles avec liens vers des sources fiables
+const articles = [
+  {
+    title: "Décret Tertiaire 2024 : Les nouvelles obligations",
+    slug: "decret-tertiaire-2024-obligations",
+    date: "2024-02-05",
+    image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&q=80&w=1200",
+    category: "Réglementation",
+    author: {
+      name: "Simon Buffard",
+      role: "Directeur Général",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&q=80&w=400"
+    },
+    content: `
+      <h2>Les nouvelles exigences du décret tertiaire pour 2024</h2>
+      <p>Le décret tertiaire impose une réduction progressive de la consommation énergétique des bâtiments tertiaires. En 2024, de nouvelles obligations entrent en vigueur.</p>
+      
+      <h3>Objectifs de réduction</h3>
+      <ul>
+        <li>-40% de consommation d'énergie en 2030</li>
+        <li>-50% en 2040</li>
+        <li>-60% en 2050</li>
+      </ul>
+
+      <h3>Nouvelles obligations 2024</h3>
+      <ul>
+        <li>Déclaration annuelle obligatoire sur OPERAT</li>
+        <li>Plan d'action détaillé pour 2030</li>
+        <li>Audit énergétique pour les grands bâtiments</li>
+      </ul>
+
+      <h3>Sanctions prévues</h3>
+      <p>Le non-respect des obligations peut entraîner :</p>
+      <ul>
+        <li>Amendes administratives jusqu'à 7500€</li>
+        <li>Publication des noms des contrevenants</li>
+        <li>Mise en demeure avec astreintes journalières</li>
+      </ul>
+    `,
+    excerpt: "Analyse détaillée des nouvelles exigences du décret tertiaire pour 2024 : objectifs, échéances et sanctions.",
+    readTime: "8 min",
+    tags: ["Décret Tertiaire", "Réglementation", "OPERAT"],
+    externalLinks: [
+      {
+        title: "Texte officiel du décret tertiaire",
+        url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000038812251",
+        source: "Légifrance"
+      },
+      {
+        title: "Guide ADEME sur le décret tertiaire",
+        url: "https://librairie.ademe.fr/urbanisme-et-batiment/4243-dispositif-eco-energie-tertiaire.html",
+        source: "ADEME"
+      }
+    ]
+  },
+  {
+    title: "Smart Building : L'IA au service de l'efficacité énergétique",
+    slug: "smart-building-ia-efficacite",
+    date: "2024-02-03",
+    image: "https://images.unsplash.com/photo-1509391618207-32f1fa10c19a?auto=format&q=80&w=1200",
+    category: "Innovations",
+    author: {
+      name: "Benoit Durif",
+      role: "Directeur Technique",
+      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&q=80&w=400"
+    },
+    content: `
+      <h2>L'IA révolutionne la gestion énergétique</h2>
+      <p>L'intelligence artificielle transforme la manière dont nous gérons l'énergie dans les bâtiments tertiaires.</p>
+      
+      <h3>Applications concrètes</h3>
+      <ul>
+        <li>Prédiction des consommations</li>
+        <li>Optimisation en temps réel</li>
+        <li>Détection d'anomalies</li>
+        <li>Maintenance prédictive</li>
+      </ul>
+
+      <h3>Bénéfices mesurables</h3>
+      <ul>
+        <li>15-25% d'économies d'énergie</li>
+        <li>Réduction des coûts de maintenance</li>
+        <li>Amélioration du confort</li>
+        <li>Prolongation de la durée de vie des équipements</li>
+      </ul>
+    `,
+    excerpt: "Comment l'intelligence artificielle révolutionne la gestion énergétique des bâtiments tertiaires.",
+    readTime: "6 min",
+    tags: ["Smart Building", "IA", "Innovation"],
+    externalLinks: [
+      {
+        title: "Rapport Smart Building - SBA",
+        url: "https://www.smartbuildingsalliance.org/publications",
+        source: "Smart Buildings Alliance"
+      },
+      {
+        title: "Guide CSTB sur l'IA dans le bâtiment",
+        url: "https://www.cstb.fr/fr/actualites/detail/intelligence-artificielle-batiment-2024/",
+        source: "CSTB"
+      }
+    ]
+  },
+  {
+    title: "CEE 2024 : Les nouveaux dispositifs pour le tertiaire",
+    slug: "cee-2024-tertiaire",
+    date: "2024-02-01",
+    image: "https://images.unsplash.com/photo-1497366754035-5f57d9b0b957?auto=format&q=80&w=1200",
+    category: "Aides & Financements",
+    author: {
+      name: "Anthony Moreau",
+      role: "Ingénieur Thermique",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&q=80&w=400"
+    },
+    content: `
+      <h2>Les CEE en 2024</h2>
+      <p>Les Certificats d'Économies d'Énergie évoluent pour mieux accompagner la transition énergétique du secteur tertiaire.</p>
+      
+      <h3>Nouveaux dispositifs</h3>
+      <ul>
+        <li>Bonification des opérations standardisées</li>
+        <li>Coup de pouce tertiaire</li>
+        <li>Programmes spécifiques</li>
+      </ul>
+
+      <h3>Montants et conditions</h3>
+      <ul>
+        <li>Jusqu'à 30% du montant des travaux</li>
+        <li>Cumul possible avec d'autres aides</li>
+        <li>Versement simplifié</li>
+      </ul>
+    `,
+    excerpt: "Guide complet des Certificats d'Économies d'Énergie pour les bâtiments tertiaires en 2024.",
+    readTime: "7 min",
+    tags: ["CEE", "Financement", "Tertiaire"],
+    externalLinks: [
+      {
+        title: "Dispositifs CEE - Ministère",
+        url: "https://www.ecologie.gouv.fr/dispositif-des-certificats-deconomies-denergie",
+        source: "Ministère de la Transition écologique"
+      },
+      {
+        title: "Guide ATEE des CEE",
+        url: "https://atee.fr/efficacite-energetique/club-cee/guide-cee",
+        source: "ATEE"
+      }
+    ]
+  }
+];
+
+export function getStaticPaths() {
+  return articles.map(article => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+
+// Trouver les articles similaires (même catégorie)
+const similarArticles = articles.filter(a => 
+  a.category === article.category && a.slug !== article.slug
+).slice(0, 2);
+---
+
+<Layout title={article.title} description={article.excerpt}>
+  <main>
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-primary to-primary/90 text-white py-24">
+      <div class="absolute inset-0 z-0">
+        <img
+          src={article.image}
+          alt={article.title}
+          class="w-full h-full object-cover opacity-20"
+        />
+      </div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-3xl mx-auto">
+          <div class="flex items-center gap-4 mb-6">
+            <span class="bg-white/10 px-4 py-1 rounded-full text-sm font-semibold">
+              {article.category}
+            </span>
+            <time datetime={article.date} class="text-white/80">
+              {new Date(article.date).toLocaleDateString('fr-FR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </time>
+          </div>
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">{article.title}</h1>
+          <div class="flex items-center gap-4">
+            <img
+              src={article.author.image}
+              alt={article.author.name}
+              class="w-12 h-12 rounded-full object-cover"
+            />
+            <div>
+              <p class="font-semibold">{article.author.name}</p>
+              <p class="text-white/80">{article.author.role}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-12">
+          <!-- Main Content -->
+          <div class="md:col-span-2">
+            <article class="prose prose-lg max-w-none">
+              <div class="mb-8">
+                <img
+                  src={article.image}
+                  alt={article.title}
+                  class="w-full rounded-xl"
+                />
+              </div>
+              <div set:html={article.content} />
+            </article>
+
+            <!-- Sources -->
+            {article.externalLinks && (
+              <div class="mt-12">
+                <h3 class="font-semibold mb-4">Sources et références</h3>
+                <div class="space-y-4">
+                  {article.externalLinks.map(link => (
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="block bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition-colors"
+                    >
+                      <p class="font-medium">{link.title}</p>
+                      <p class="text-sm text-gray-500">{link.source}</p>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <!-- Tags -->
+            <div class="mt-12">
+              <h3 class="font-semibold mb-4">Tags</h3>
+              <div class="flex flex-wrap gap-2">
+                {article.tags.map(tag => (
+                  <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <!-- Share -->
+            <div class="mt-12">
+              <h3 class="font-semibold mb-4">Partager l'article</h3>
+              <div class="flex gap-4">
+                <a
+                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(Astro.url)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-[#1DA1F2] text-white px-4 py-2 rounded-lg hover:opacity-90 transition-opacity"
+                >
+                  Twitter
+                </a>
+                <a
+                  href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(Astro.url)}&title=${encodeURIComponent(article.title)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-[#0A66C2] text-white px-4 py-2 rounded-lg hover:opacity-90 transition-opacity"
+                >
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div>
+            <!-- Articles Similaires -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+              <h3 class="text-xl font-bold mb-6">Articles Similaires</h3>
+              <div class="space-y-6">
+                {similarArticles.map(similar => (
+                  <a
+                    href={`/blog/${similar.slug}`}
+                    class="block group"
+                  >
+                    <div class="aspect-w-16 aspect-h-9 mb-4">
+                      <img
+                        src={similar.image}
+                        alt={similar.title}
+                        class="rounded-lg object-cover"
+                      />
+                    </div>
+                    <h4 class="font-semibold group-hover:text-primary transition-colors">
+                      {similar.title}
+                    </h4>
+                    <p class="text-sm text-gray-500 mt-2">{similar.readTime}</p>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="bg-gray-100 rounded-xl p-6 mt-8">
+              <h3 class="text-xl font-bold mb-4">Newsletter</h3>
+              <p class="text-gray-600 mb-4">
+                Recevez nos dernières actualités et analyses directement dans votre boîte mail.
+              </p>
+              <form class="space-y-4">
+                <input
+                  type="email"
+                  placeholder="Votre email"
+                  class="w-full px-4 py-2 rounded-lg border-gray-300"
+                  required
+                />
+                <button
+                  type="submit"
+                  class="w-full bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors"
+                >
+                  S'inscrire
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

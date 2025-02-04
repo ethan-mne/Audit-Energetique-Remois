@@ -1,0 +1,392 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = {
+  featured: {
+    title: "Tour Horizon",
+    description: "Une transformation énergétique majeure qui a permis de réduire la consommation de 42% tout en améliorant le confort des usagers.",
+    image: "https://images.unsplash.com/photo-1531972111231-7482a960e109?auto=format&q=80&w=1600",
+    category: "Tertiaire",
+    savings: "-42%",
+    stats: {
+      surface: "15 000 m²",
+      investment: "850 000 €",
+      savings: "156 000 €/an",
+      roi: "5.4 ans"
+    },
+    solutions: [
+      "GTB centralisée",
+      "Éclairage LED intelligent",
+      "Optimisation CVC",
+      "Isolation thermique"
+    ],
+    testimonial: {
+      content: "La transformation a dépassé nos attentes, tant en termes d'économies que de confort.",
+      author: "M. Dubois",
+      role: "Directeur Général"
+    }
+  },
+  categories: [
+    {
+      name: "Tertiaire",
+      icon: "🏢",
+      projects: [
+        {
+          title: "Campus Innovation",
+          category: "Bureau",
+          image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&q=80&w=1200",
+          surface: "12 000 m²",
+          savings: "-38%",
+          year: "2023",
+          solutions: ["GTB", "LED", "PAC"],
+          results: {
+            energy: "156 000 kWh/an",
+            cost: "42 000 €/an",
+            co2: "45 tonnes/an"
+          },
+          contact: {
+            name: "M. Laurent",
+            role: "Directeur Administratif"
+          }
+        },
+        {
+          title: "Centre Commercial Étoile",
+          category: "Commerce",
+          image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&q=80&w=1200",
+          surface: "8 500 m²",
+          savings: "-35%",
+          year: "2023",
+          solutions: ["Free cooling", "LED", "GTB"],
+          results: {
+            energy: "125 000 kWh/an",
+            cost: "35 000 €/an",
+            co2: "38 tonnes/an"
+          },
+          contact: {
+            name: "Mme Martin",
+            role: "Directrice des Opérations"
+          }
+        }
+      ]
+    },
+    {
+      name: "Médical",
+      icon: "🏥",
+      projects: [
+        {
+          title: "EHPAD Les Amandines",
+          category: "EHPAD",
+          image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&q=80&w=1200",
+          surface: "4 500 m²",
+          savings: "-45%",
+          year: "2023",
+          solutions: ["CVC", "LED", "Isolation"],
+          results: {
+            energy: "98 000 kWh/an",
+            cost: "32 000 €/an",
+            co2: "28 tonnes/an"
+          },
+          contact: {
+            name: "Dr. Bernard",
+            role: "Directeur d'Établissement"
+          }
+        },
+        {
+          title: "Clinique Saint-Joseph",
+          category: "Clinique",
+          image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&q=80&w=1200",
+          surface: "6 800 m²",
+          savings: "-40%",
+          year: "2023",
+          solutions: ["PAC", "GTB", "Solaire"],
+          results: {
+            energy: "145 000 kWh/an",
+            cost: "38 000 €/an",
+            co2: "42 tonnes/an"
+          },
+          contact: {
+            name: "Dr. Petit",
+            role: "Directeur Médical"
+          }
+        }
+      ]
+    }
+  ]
+};
+
+const stats = [
+  { number: "150+", label: "Projets réalisés", icon: "🏢" },
+  { number: "45%", label: "Économies moyennes", icon: "💰" },
+  { number: "4.8/5", label: "Satisfaction client", icon: "⭐" },
+  { number: "15+", label: "Années d'expérience", icon: "⏳" }
+];
+---
+
+<Layout title="Nos Réalisations" description="Découvrez nos projets d'optimisation énergétique réalisés dans la région de Reims">
+  <main class="bg-gray-50">
+    <!-- Hero Section avec Parallax -->
+    <section class="relative min-h-[70vh] flex items-center">
+      <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/90 to-primary/70 mix-blend-multiply"></div>
+        <img
+          src={projects.featured.image}
+          alt="Réalisations"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="container mx-auto px-4 relative z-10 text-white pt-20">
+        <div class="max-w-3xl">
+          <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+            Nos Réalisations
+          </h1>
+          <p class="text-xl text-white/90 mb-8">
+            Découvrez nos projets d'optimisation énergétique et les résultats concrets obtenus pour nos clients.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            {projects.categories.map(category => (
+              <a
+                href={`#${category.name.toLowerCase()}`}
+                class="bg-white/10 hover:bg-white/20 px-6 py-3 rounded-lg flex items-center gap-2 transition-all hover:scale-105"
+              >
+                <span class="text-2xl">{category.icon}</span>
+                <span class="font-medium">{category.name}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projet Vedette -->
+    <section class="py-20 -mt-20">
+      <div class="container mx-auto px-4">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-[1.02] transition-all duration-500">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="relative group">
+              <div class="relative h-full overflow-hidden">
+                <img
+                  src={projects.featured.image}
+                  alt={projects.featured.title}
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 right-6">
+                  <span class="bg-primary/90 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                    Projet Phare
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="p-8 md:p-12 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-6">
+                  <h2 class="text-3xl font-bold">{projects.featured.title}</h2>
+                  <span class="bg-green-100 text-green-800 px-4 py-2 rounded-full text-lg font-bold">
+                    {projects.featured.savings}
+                  </span>
+                </div>
+                <p class="text-gray-600 text-lg mb-8">{projects.featured.description}</p>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                  {Object.entries(projects.featured.stats).map(([key, value]) => (
+                    <div class="bg-gray-50 p-4 rounded-xl text-center">
+                      <p class="text-primary font-bold text-xl mb-1">{value}</p>
+                      <p class="text-gray-600 text-sm capitalize">{key.replace('_', ' ')}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div class="mb-8">
+                  <h3 class="font-semibold mb-4">Solutions déployées</h3>
+                  <div class="flex flex-wrap gap-3">
+                    {projects.featured.solutions.map(solution => (
+                      <span class="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm">
+                        {solution}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <blockquote class="border-l-4 border-primary pl-4 italic text-gray-600">
+                  "{projects.featured.testimonial.content}"
+                  <footer class="mt-2 text-sm">
+                    <strong>{projects.featured.testimonial.author}</strong>
+                    <span class="text-gray-500"> - {projects.featured.testimonial.role}</span>
+                  </footer>
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projets par Catégorie -->
+    {projects.categories.map(category => (
+      <section id={category.name.toLowerCase()} class="py-20">
+        <div class="container mx-auto px-4">
+          <div class="flex items-center gap-4 mb-12">
+            <span class="text-4xl">{category.icon}</span>
+            <h2 class="text-3xl font-bold">Projets {category.name}</h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            {category.projects.map(project => (
+              <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
+                <div class="relative">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                    <div>
+                      <h3 class="text-white text-xl font-bold mb-1">{project.title}</h3>
+                      <p class="text-white/90">{project.category}</p>
+                    </div>
+                    <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                      {project.savings}
+                    </span>
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="grid grid-cols-3 gap-4 mb-6">
+                    <div class="text-center">
+                      <p class="text-gray-600 text-sm">Surface</p>
+                      <p class="font-semibold">{project.surface}</p>
+                    </div>
+                    <div class="text-center">
+                      <p class="text-gray-600 text-sm">Catégorie</p>
+                      <p class="font-semibold">{project.category}</p>
+                    </div>
+                    <div class="text-center">
+                      <p class="text-gray-600 text-sm">Année</p>
+                      <p class="font-semibold">{project.year}</p>
+                    </div>
+                  </div>
+
+                  <div class="mb-6">
+                    <h4 class="font-semibold mb-3">Solutions déployées</h4>
+                    <div class="flex flex-wrap gap-2">
+                      {project.solutions.map(solution => (
+                        <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">
+                          {solution}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div class="border-t pt-6">
+                    <div class="flex items-center justify-between mb-4">
+                      <h4 class="font-semibold">Résultats obtenus</h4>
+                      <div class="text-sm text-gray-600">
+                        <p class="font-medium">{project.contact.name}</p>
+                        <p>{project.contact.role}</p>
+                      </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                      <div class="text-center">
+                        <p class="text-primary font-bold">{project.results.energy}</p>
+                        <p class="text-sm text-gray-600">Économies</p>
+                      </div>
+                      <div class="text-center">
+                        <p class="text-primary font-bold">{project.results.cost}</p>
+                        <p class="text-sm text-gray-600">Gains financiers</p>
+                      </div>
+                      <div class="text-center">
+                        <p class="text-primary font-bold">{project.results.co2}</p>
+                        <p class="text-sm text-gray-600">CO₂ évité</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <!-- Statistiques -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map(stat => (
+            <div class="text-center transform hover:scale-105 transition-all duration-300">
+              <div class="text-4xl mb-2">{stat.icon}</div>
+              <p class="text-3xl font-bold text-primary mb-2">{stat.number}</p>
+              <p class="text-gray-600">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="relative py-20 overflow-hidden">
+      <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/90 to-primary/70"></div>
+        <img
+          src="https://images.unsplash.com/photo-1497366858526-0766cadbe8fa?auto=format&fit=crop&q=80"
+          alt="Background"
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <div class="container mx-auto px-4 relative z-10 text-center text-white">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8">Prêt à optimiser votre performance énergétique ?</h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto">
+          Contactez-nous pour discuter de votre projet et découvrir comment nous pouvons vous aider à réduire votre consommation énergétique.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a
+            href="/contact"
+            class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-lg inline-flex items-center font-semibold transition-all transform hover:scale-105"
+          >
+            Demander un audit gratuit
+            <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a
+            href="/services"
+            class="bg-white/10 hover:bg-white/20 px-8 py-4 rounded-lg inline-flex items-center font-semibold transition-all"
+          >
+            Découvrir nos services
+            <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 700ms;
+}
+
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out;
+}
+</style>

@@ -1,0 +1,384 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const packs = {
+  tertiaire: {
+    title: "Pack Bâtiment Tertiaire",
+    icon: "🏢",
+    description: "Solution complète pour l'audit énergétique de vos bâtiments tertiaires",
+    tiers: [
+      {
+        name: "Essentiel",
+        subtitle: "1 à 5 bâtiments",
+        price: "50€",
+        period: "/mois/bâtiment",
+        icon: "🌱",
+        highlight: false,
+        stripeLink: "https://buy.stripe.com/4gw8wW1bReT0aNa6oo"
+      },
+      {
+        name: "Business",
+        subtitle: "6 à 30 bâtiments",
+        price: "39,99€",
+        period: "/mois/bâtiment",
+        icon: "⭐",
+        highlight: true,
+        stripeLink: "https://buy.stripe.com/7sI8wWg6L3ai8F27st"
+      },
+      {
+        name: "Enterprise",
+        subtitle: "31+ bâtiments",
+        price: "29,99€",
+        period: "/mois/bâtiment",
+        icon: "🏆",
+        highlight: false,
+        stripeLink: "https://buy.stripe.com/7sI3cC07N5iq2gE3ce"
+      }
+    ],
+    features: [
+      { text: "Audit énergétique complet", icon: "📊" },
+      { text: "Conformité décret tertiaire", icon: "✅" },
+      { text: "Suivi mensuel des consommations", icon: "📈" },
+      { text: "Rapport détaillé et recommandations", icon: "📝" },
+      { text: "Accompagnement personnalisé", icon: "🤝" },
+      { text: "Support technique dédié", icon: "🛠️" }
+    ]
+  },
+  residentiel: {
+    title: "Pack Résidentiel",
+    icon: "🏘️",
+    description: "Audit énergétique pour copropriétés et immeubles résidentiels",
+    tiers: [
+      {
+        name: "Basic",
+        subtitle: "1 à 5 immeubles",
+        price: "59,99€",
+        period: "/mois/bâtiment",
+        icon: "🏠",
+        highlight: false,
+        stripeLink: "https://buy.stripe.com/5kA8wWg6L12a7AY28b"
+      },
+      {
+        name: "Premium",
+        subtitle: "6 à 30 immeubles",
+        price: "49,99€",
+        period: "/mois/bâtiment",
+        icon: "🌟",
+        highlight: true,
+        stripeLink: "https://buy.stripe.com/dR6bJ82fV7qy7AY7sw"
+      },
+      {
+        name: "Elite",
+        subtitle: "31+ immeubles",
+        price: "39,99€",
+        period: "/mois/bâtiment",
+        icon: "👑",
+        highlight: false,
+        stripeLink: "https://buy.stripe.com/9AQeVk6wb12a2gEfZ3"
+      }
+    ],
+    extras: [
+      {
+        name: "Plan Pluriannuel de Travaux (PPT)",
+        price: "1 799€ TTC",
+        period: "/bâtiment",
+        icon: "📅"
+      },
+      {
+        name: "Diagnostic Technique Global (DTG)",
+        price: "2 399€ TTC",
+        period: "/bâtiment",
+        icon: "🔍"
+      }
+    ],
+    features: [
+      { text: "Audit énergétique détaillé", icon: "📊" },
+      { text: "Analyse des consommations", icon: "📈" },
+      { text: "Plan d'amélioration énergétique", icon: "📋" },
+      { text: "Assistance aux assemblées générales", icon: "👥" },
+      { text: "Suivi des travaux", icon: "🏗️" },
+      { text: "Accompagnement aux aides financières", icon: "💰" }
+    ]
+  },
+  particulier: {
+    title: "Pack Particulier",
+    icon: "🏡",
+    description: "Audit énergétique réglementaire pour votre bien immobilier",
+    price: "799,99€ TTC",
+    stripeLink: "https://buy.stripe.com/00gbJ87AfeT0cVi6ou",
+    features: [
+      { text: "Audit réglementaire complet", icon: "📋" },
+      { text: "Rapport détaillé", icon: "📝" },
+      { text: "Simulation thermique", icon: "🌡️" },
+      { text: "Préconisations de travaux", icon: "🔧" },
+      { text: "Estimation des coûts", icon: "💶" },
+      { text: "Accompagnement personnalisé", icon: "🤝" }
+    ]
+  }
+};
+
+const faqs = [
+  {
+    question: "Comment fonctionne l'essai gratuit de 30 jours ?",
+    answer: "Vous bénéficiez d'un accès complet à toutes les fonctionnalités pendant 30 jours. Aucun prélèvement n'est effectué pendant cette période. Vous pouvez annuler à tout moment avant la fin de l'essai."
+  },
+  {
+    question: "Dois-je entrer mes coordonnées bancaires pour l'essai gratuit ?",
+    answer: "Oui, pour activer votre essai gratuit, vous devez entrer vos coordonnées bancaires. Aucun prélèvement ne sera effectué avant la fin des 30 jours, et vous recevrez un rappel 3 jours avant la fin de l'essai."
+  },
+  {
+    question: "Comment puis-je annuler mon essai gratuit ?",
+    answer: "Vous pouvez annuler votre essai à tout moment depuis votre espace client ou en nous contactant. L'annulation est immédiate et sans frais."
+  },
+  {
+    question: "Quelle est la durée d'engagement ?",
+    answer: "Nos packs mensuels sont sans engagement. Pour les prestations ponctuelles (PPT, DTG, audit réglementaire), il s'agit d'une prestation unique."
+  },
+  {
+    question: "Les déplacements sont-ils inclus ?",
+    answer: "Nous agissons sur le plan national, donc aucun frais à prévoir en amont pour les déplacements"
+  }
+];
+
+const reassuranceItems = [
+  { icon: "🎁", title: "30 Jours Gratuits", text: "Essai sans engagement" },
+  { icon: "🔒", title: "Paiement Sécurisé", text: "Transactions cryptées et sécurisées" },
+  { icon: "📞", title: "Support 24/7", text: "Une équipe à votre écoute" },
+  { icon: "✨", title: "Satisfaction Garantie", text: "98% de clients satisfaits" }
+];
+---
+
+<Layout title="Abonnements" description="Découvrez nos packs d'audit énergétique adaptés à vos besoins">
+  <main>
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-primary to-primary/90 text-white py-24">
+      <div class="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80"
+          alt="Bâtiment moderne"
+          class="w-full h-full object-cover opacity-10"
+        />
+      </div>
+      <div class="container mx-auto px-4 text-center relative z-10">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Nos Packs d'Audit Énergétique</h1>
+        <p class="text-xl text-white/90 max-w-2xl mx-auto mb-8">
+          Des solutions adaptées à chaque type de bâtiment pour optimiser votre performance énergétique
+        </p>
+        <div class="flex justify-center gap-8 mt-12">
+          {Object.values(packs).map(pack => (
+            <a href={`#${pack.title.toLowerCase().replace(/ /g, '-')}`} class="bg-white/10 hover:bg-white/20 px-6 py-4 rounded-lg flex items-center gap-3 transition-colors">
+              <span class="text-2xl">{pack.icon}</span>
+              <span class="font-semibold">{pack.title}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Nouvelle bannière d'essai gratuit -->
+    <section class="bg-gradient-to-r from-green-500 to-green-600 text-white py-6 relative overflow-hidden">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <span class="text-4xl">🎁</span>
+            <div>
+              <h2 class="text-2xl font-bold">30 jours d'essai gratuit sur tous nos abonnements !</h2>
+              <p class="text-white/90">Testez toutes les fonctionnalités sans engagement</p>
+            </div>
+          </div>
+          <div class="hidden md:block">
+            <div class="bg-white/20 px-4 py-2 rounded-lg text-sm">
+              <span class="font-bold">0€</span> pendant 30 jours
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reassurance Banner -->
+    <section class="bg-white py-8 shadow-lg">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {reassuranceItems.map(item => (
+            <div class="flex items-center gap-4">
+              <span class="text-3xl">{item.icon}</span>
+              <div>
+                <h3 class="font-semibold">{item.title}</h3>
+                <p class="text-sm text-gray-600">{item.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Pack Sections -->
+    {Object.entries(packs).map(([key, pack]) => (
+      <section id={pack.title.toLowerCase().replace(/ /g, '-')} class="py-20">
+        <div class="container mx-auto px-4">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-4xl mb-4 block">{pack.icon}</span>
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">{pack.title}</h2>
+            <p class="text-xl text-gray-600">{pack.description}</p>
+          </div>
+
+          {pack.tiers ? (
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+              {pack.tiers.map(tier => (
+                <div class={`bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 ${tier.highlight ? 'ring-2 ring-primary' : ''}`}>
+                  <div class="p-8">
+                    <div class="text-center mb-6">
+                      <span class="text-4xl mb-4 block">{tier.icon}</span>
+                      <h3 class="text-2xl font-bold mb-2">{tier.name}</h3>
+                      <p class="text-gray-600">{tier.subtitle}</p>
+                    </div>
+                    <div class="text-center mb-8">
+                      <div class="mb-2">
+                        <span class="text-4xl font-bold">{tier.price}</span>
+                        <span class="text-gray-600">{tier.period}</span>
+                      </div>
+                      <div class="text-green-600 text-sm font-medium">
+                        Premiers 30 jours gratuits !
+                      </div>
+                    </div>
+                    <a
+                      href={tier.stripeLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class={`w-full block text-center ${tier.highlight ? 'bg-primary' : 'bg-gray-800'} text-white hover:opacity-90 px-6 py-3 rounded-lg font-semibold transition-colors`}
+                    >
+                      Essayer gratuitement
+                    </a>
+                    <p class="text-center text-sm text-gray-500 mt-2">
+                      <span class="inline-flex items-center gap-1">
+                        🔒 Paiement sécurisé via 💳 Stripe
+                      </span>
+                    </p>
+                    <p class="text-center text-xs text-gray-500 mt-1">
+                      Premier prélèvement après 30 jours
+                    </p>
+                  </div>
+                  <div class="bg-gray-50 p-8">
+                    <ul class="space-y-4">
+                      {pack.features.map(feature => (
+                        <li class="flex items-start">
+                          <span class="text-xl mr-3">{feature.icon}</span>
+                          <span class="text-gray-600">{feature.text}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  {tier.highlight && (
+                    <div class="bg-primary text-white text-center py-2 text-sm font-semibold">
+                      Offre la plus populaire
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div class="max-w-lg mx-auto">
+              <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
+                <div class="p-8">
+                  <div class="text-center mb-8">
+                    <span class="text-4xl font-bold">{pack.price}</span>
+                  </div>
+                  <a
+                    href={pack.stripeLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-full block text-center bg-primary text-white hover:opacity-90 px-6 py-3 rounded-lg font-semibold transition-colors"
+                  >
+                    Commander maintenant
+                  </a>
+                  <p class="text-center text-sm text-gray-500 mt-2">
+                    <span class="inline-flex items-center gap-1">
+                      🔒 Paiement sécurisé via 💳 Stripe
+                    </span>
+                  </p>
+                </div>
+                <div class="bg-gray-50 p-8">
+                  <ul class="space-y-4">
+                    {pack.features.map(feature => (
+                      <li class="flex items-start">
+                        <span class="text-xl mr-3">{feature.icon}</span>
+                        <span class="text-gray-600">{feature.text}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {pack.extras && (
+            <div class="grid md:grid-cols-2 gap-8">
+              {pack.extras.map(extra => (
+                <div class="bg-white rounded-xl shadow-lg p-8 transform transition-all duration-300 hover:scale-105">
+                  <div class="flex items-center gap-4 mb-6">
+                    <span class="text-4xl">{extra.icon}</span>
+                    <h3 class="text-xl font-bold">{extra.name}</h3>
+                  </div>
+                  <div class="mb-6">
+                    <span class="text-4xl font-bold">{extra.price}</span>
+                    <span class="text-gray-600">{extra.period}</span>
+                  </div>
+                  <a
+                    href="/contact"
+                    class="w-full block text-center bg-gray-800 text-white hover:opacity-90 px-6 py-3 rounded-lg font-semibold transition-colors"
+                  >
+                    Nous contacter
+                  </a>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+    ))}
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Questions Fréquentes</h2>
+          <p class="text-xl text-gray-600">
+            Tout ce que vous devez savoir sur nos services d'audit énergétique
+          </p>
+        </div>
+
+        <div class="max-w-3xl mx-auto">
+          <div class="space-y-6">
+            {faqs.map(faq => (
+              <div class="bg-white p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105">
+                <h3 class="text-lg font-bold mb-3">{faq.question}</h3>
+                <p class="text-gray-600">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-br from-primary to-primary/90 text-white py-16">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-8">Besoin d'aide pour choisir ?</h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto">
+          Contactez-nous pour discuter de vos besoins et obtenir un devis personnalisé
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/contact" class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-lg inline-block font-semibold transition-colors">
+            Nous contacter
+          </a>
+          <a href="tel:+33756841217" class="bg-white/10 hover:bg-white/20 px-8 py-4 rounded-lg inline-flex items-center font-semibold transition-colors">
+            <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            07 56 84 12 17
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

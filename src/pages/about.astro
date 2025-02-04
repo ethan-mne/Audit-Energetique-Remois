@@ -1,0 +1,234 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const teamMembers = [
+  {
+    name: "Simon Buffard",
+    role: "Directeur Général",
+    description: "Expert en stratégie énergétique avec plus de 15 ans d'expérience dans le secteur.",
+    icon: "👨‍💼"
+  },
+  {
+    name: "Benoit Durif",
+    role: "Directeur Technique",
+    description: "Spécialiste des audits énergétiques et de la rénovation thermique.",
+    icon: "👨‍🔬"
+  },
+  {
+    name: "Anthony Moreau",
+    role: "Ingénieur Thermique",
+    description: "Expert en simulation thermique dynamique et optimisation énergétique.",
+    icon: "👨‍🔧"
+  }
+];
+
+const certifications = [
+  {
+    name: "RGE",
+    icon: "🏅",
+    description: "Reconnu Garant de l'Environnement"
+  },
+  {
+    name: "ISO 9001",
+    icon: "✅",
+    description: "Management de la Qualité"
+  },
+  {
+    name: "QUALIBAT",
+    icon: "🏗️",
+    description: "Qualification et Certification du Bâtiment"
+  },
+  {
+    name: "OPQIBI",
+    icon: "🎯",
+    description: "Qualification de l'Ingénierie"
+  }
+];
+
+const values = [
+  {
+    title: "Excellence",
+    icon: "🌟",
+    description: "Nous nous engageons à fournir des services de la plus haute qualité, en utilisant les dernières technologies et méthodologies d'audit énergétique."
+  },
+  {
+    title: "Innovation",
+    icon: "💡",
+    description: "Des solutions modernes et innovantes pour répondre aux défis énergétiques complexes d'aujourd'hui et de demain."
+  },
+  {
+    title: "Proximité",
+    icon: "🤝",
+    description: "Une approche personnalisée pour chaque client, avec un accompagnement sur mesure tout au long de votre projet d'optimisation énergétique."
+  },
+  {
+    title: "Engagement",
+    icon: "🎯",
+    description: "Un engagement total envers la satisfaction client et la réussite de vos projets d'efficacité énergétique."
+  }
+];
+
+const stats = [
+  { number: "500+", label: "Projets réalisés", icon: "📊" },
+  { number: "40%", label: "Économies moyennes", icon: "💰" },
+  { number: "15+", label: "Années d'expérience", icon: "⏳" },
+  { number: "98%", label: "Clients satisfaits", icon: "🌟" }
+];
+---
+
+<Layout title="Qui sommes-nous" description="Découvrez A.E.R, votre expert en audit énergétique à Reims">
+  <main>
+    <!-- Hero Section avec Image de Fond -->
+    <section class="relative bg-gradient-to-r from-primary to-primary/90 text-white py-24">
+      <div class="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80"
+          alt="Bâtiment moderne"
+          class="w-full h-full object-cover opacity-20"
+        />
+      </div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-3xl">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">Qui sommes-nous</h1>
+          <p class="text-xl text-white/90">
+            A.E.R est votre partenaire de confiance pour l'optimisation énergétique dans la région de Reims, 
+            alliant expertise technique et engagement environnemental.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notre Histoire Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <span class="text-primary font-semibold mb-2 block">Notre Histoire</span>
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Une expertise reconnue depuis plus de 15 ans</h2>
+            <p class="text-gray-600 mb-6">
+              Fondée avec la vision d'accompagner particuliers et professionnels dans leur transition énergétique, 
+              A.E.R s'est imposée comme un acteur majeur de l'audit énergétique dans la région de Reims.
+            </p>
+            <p class="text-gray-600 mb-8">
+              Notre expertise technique, combinée à notre connaissance approfondie des enjeux énergétiques locaux, 
+              nous permet d'offrir des solutions personnalisées et efficaces à nos clients.
+            </p>
+            <div class="grid grid-cols-2 gap-8">
+              {stats.map(stat => (
+                <div class="bg-primary/5 p-6 rounded-lg text-center">
+                  <div class="text-4xl mb-2">{stat.icon}</div>
+                  <p class="text-3xl font-bold text-primary mb-2">{stat.number}</p>
+                  <p class="text-gray-600">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <img
+              src="https://images.unsplash.com/photo-1497366858526-0766cadbe8fa?auto=format&fit=crop&q=80"
+              alt="Audit énergétique"
+              class="rounded-lg shadow-lg w-full h-64 object-cover"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80"
+              alt="Bâtiment moderne"
+              class="rounded-lg shadow-lg w-full h-64 object-cover mt-8"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notre Équipe Section -->
+    <section class="bg-gray-50 py-20">
+      <div class="container mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-primary font-semibold mb-2 block">Notre Équipe</span>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Des experts passionnés</h2>
+          <p class="text-xl text-gray-600">
+            Une équipe de professionnels certifiés à votre service pour optimiser la performance énergétique de vos bâtiments.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          {teamMembers.map(member => (
+            <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+              <div class="text-center">
+                <div class="text-6xl mb-6">{member.icon}</div>
+                <h3 class="text-xl font-bold mb-2">{member.name}</h3>
+                <p class="text-primary font-semibold mb-4">{member.role}</p>
+                <p class="text-gray-600">{member.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Nos Valeurs Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-primary font-semibold mb-2 block">Nos Valeurs</span>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Ce qui nous définit</h2>
+          <p class="text-xl text-gray-600">
+            Des valeurs fortes qui guident chacune de nos actions pour vous garantir un service d'excellence.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-4 gap-8">
+          {values.map(value => (
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+              <div class="text-5xl mb-6">{value.icon}</div>
+              <h3 class="text-xl font-bold mb-4">{value.title}</h3>
+              <p class="text-gray-600">
+                {value.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="bg-gray-50 py-20">
+      <div class="container mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-primary font-semibold mb-2 block">Nos Certifications</span>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Une expertise certifiée</h2>
+          <p class="text-xl text-gray-600">
+            Nos certifications témoignent de notre engagement envers l'excellence et la qualité de nos services.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {certifications.map(cert => (
+            <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+              <div class="text-5xl mb-4">{cert.icon}</div>
+              <h3 class="font-bold mb-2">{cert.name}</h3>
+              <p class="text-gray-600 text-sm">{cert.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-primary text-white py-16">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8">Prêt à optimiser votre performance énergétique ?</h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto">
+          Contactez-nous pour discuter de votre projet et découvrir comment nous pouvons vous aider.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/contact" class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-lg inline-block font-semibold transition-colors">
+            Demander un devis
+          </a>
+          <a href="tel:+33756841217" class="bg-white/10 hover:bg-white/20 px-8 py-4 rounded-lg inline-flex items-center font-semibold transition-colors">
+            <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            07 56 84 12 17
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,290 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    title: "Audit Énergétique Tertiaire",
+    icon: "building",
+    description: "Solutions adaptées aux entreprises pour optimiser leur consommation énergétique et respecter le décret tertiaire.",
+    features: [
+      "Conformité décret tertiaire",
+      "Analyse des systèmes CVC",
+      "Étude d'éclairage",
+      "Gestion technique du bâtiment",
+      "Plan pluriannuel",
+      "Accompagnement OPERAT"
+    ],
+    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&q=80&w=1200"
+  },
+  {
+    title: "Optimisation Énergétique",
+    icon: "chart",
+    description: "Accompagnement personnalisé pour l'optimisation de vos installations et la réduction de votre consommation.",
+    features: [
+      "Analyse des consommations",
+      "Optimisation CVC",
+      "Gestion technique",
+      "Suivi énergétique",
+      "Formation équipes",
+      "Maintenance prédictive"
+    ],
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&q=80&w=1200"
+  },
+  {
+    title: "Solutions Renouvelables",
+    icon: "sun",
+    description: "Intégration d'énergies renouvelables et solutions innovantes pour réduire votre empreinte carbone.",
+    features: [
+      "Panneaux solaires",
+      "Pompes à chaleur",
+      "Récupération chaleur",
+      "Smart building",
+      "Monitoring temps réel",
+      "Certification HQE"
+    ],
+    image: "https://images.unsplash.com/photo-1531972111231-7482a960e109?auto=format&q=80&w=1200"
+  }
+];
+
+const partners = [
+  {
+    name: "ADEME",
+    icon: "🌱",
+    description: "Agence de la transition écologique"
+  },
+  {
+    name: "Région Grand Est",
+    icon: "🏛️",
+    description: "Partenaire institutionnel"
+  },
+  {
+    name: "FFB",
+    icon: "🏗️",
+    description: "Fédération Française du Bâtiment"
+  },
+  {
+    name: "CAPEB",
+    icon: "🔨",
+    description: "Confédération de l'Artisanat et des Petites Entreprises du Bâtiment"
+  }
+];
+
+const aides = [
+  {
+    name: "MaPrimeRénov'",
+    description: "Aide principale de l'État pour la rénovation énergétique",
+    montant: "Jusqu'à 20 000€"
+  },
+  {
+    name: "CEE",
+    description: "Certificats d'Économies d'Énergie",
+    montant: "Variable selon travaux"
+  },
+  {
+    name: "Éco-PTZ",
+    description: "Prêt à taux zéro pour la rénovation",
+    montant: "Jusqu'à 50 000€"
+  },
+  {
+    name: "Aides locales",
+    description: "Région Grand Est et collectivités",
+    montant: "Selon conditions"
+  }
+];
+---
+
+<Layout title="Nos Services" description="Découvrez nos services d'audit énergétique pour particuliers et professionnels à Reims">
+  <main>
+    <!-- Hero Section avec Parallax -->
+    <section class="relative bg-gradient-to-br from-primary to-primary/90 text-white py-24 overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1497366858526-0766cadbe8fa?auto=format&fit=crop&q=80"
+          alt="Audit énergétique"
+          class="w-full h-full object-cover opacity-20"
+        />
+      </div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-3xl">
+          <span class="inline-block bg-white/10 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            Expert certifié RGE
+          </span>
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">Nos Services d'Audit Énergétique</h1>
+          <p class="text-xl text-white/90 mb-8">
+            Des solutions personnalisées pour optimiser votre consommation énergétique et réduire vos coûts, 
+            accompagnées par nos partenaires de confiance.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-lg inline-block font-semibold transition-colors">
+              Demander un devis gratuit
+            </a>
+            <a href="#services" class="bg-white/10 hover:bg-white/20 px-8 py-4 rounded-lg inline-flex items-center font-semibold transition-colors">
+              Découvrir nos services
+              <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-primary font-semibold mb-2 block">Nos Prestations</span>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Solutions sur mesure</h2>
+          <p class="text-xl text-gray-600">
+            Des services adaptés à vos besoins spécifiques, que vous soyez un particulier ou un professionnel.
+          </p>
+        </div>
+
+        <div class="space-y-20">
+          {services.map((service, index) => (
+            <div class={`grid md:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+              <div class="relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-xl"></div>
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  class="rounded-xl shadow-lg w-full h-[400px] object-cover"
+                />
+              </div>
+              <div class="space-y-6">
+                <div class="bg-primary/10 w-16 h-16 rounded-xl flex items-center justify-center">
+                  <svg class="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                  </svg>
+                </div>
+                <h3 class="text-2xl font-bold">{service.title}</h3>
+                <p class="text-gray-600">{service.description}</p>
+                <div class="grid grid-cols-2 gap-4">
+                  {service.features.map(feature => (
+                    <div class="flex items-center space-x-2">
+                      <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span class="text-gray-600">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+                <a href="/contact" class="inline-flex items-center text-primary hover:text-primary/80 font-semibold">
+                  En savoir plus
+                  <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Aides Section -->
+    <section class="bg-gray-50 py-20">
+      <div class="container mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-primary font-semibold mb-2 block">Aides Financières</span>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Financez vos travaux</h2>
+          <p class="text-xl text-gray-600">
+            Nous vous accompagnons dans l'obtention des aides disponibles pour vos projets de rénovation énergétique.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-8">
+          {aides.map(aide => (
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+              <h3 class="text-xl font-bold mb-2">{aide.name}</h3>
+              <p class="text-gray-600 mb-4">{aide.description}</p>
+              <p class="text-primary font-semibold">{aide.montant}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Partenaires Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-primary font-semibold mb-2 block">Nos Partenaires</span>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Ils nous font confiance</h2>
+          <p class="text-xl text-gray-600">
+            Nous travaillons avec des partenaires de confiance pour vous garantir des prestations de qualité.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {partners.map(partner => (
+            <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+              <div class="text-6xl mb-4">{partner.icon}</div>
+              <h3 class="font-bold mb-2">{partner.name}</h3>
+              <p class="text-gray-600 text-sm">{partner.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Décret Tertiaire Section -->
+    <section class="bg-gray-50 py-20">
+      <div class="container mx-auto px-4">
+        <div class="bg-white p-8 rounded-xl shadow-lg max-w-4xl mx-auto">
+          <div class="text-center mb-8">
+            <h2 class="text-2xl font-bold mb-4">Décret Tertiaire : Êtes-vous concerné ?</h2>
+            <p class="text-gray-600">
+              Le décret tertiaire impose une réduction progressive de la consommation énergétique des bâtiments tertiaires.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-primary/5 p-6 rounded-lg text-center">
+              <p class="text-3xl font-bold text-primary mb-2">-40%</p>
+              <p class="text-gray-600">en 2030</p>
+            </div>
+            <div class="bg-primary/5 p-6 rounded-lg text-center">
+              <p class="text-3xl font-bold text-primary mb-2">-50%</p>
+              <p class="text-gray-600">en 2040</p>
+            </div>
+            <div class="bg-primary/5 p-6 rounded-lg text-center">
+              <p class="text-3xl font-bold text-primary mb-2">-60%</p>
+              <p class="text-gray-600">en 2050</p>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <a
+              href="/contact"
+              class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg inline-block font-semibold transition-colors"
+            >
+              Vérifier votre éligibilité
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-br from-primary to-primary/90 text-white py-20">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8">Prêt à commencer votre projet ?</h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto text-white/90">
+          Contactez-nous pour discuter de votre projet et obtenir un devis personnalisé.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/contact" class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-lg inline-block font-semibold transition-colors">
+            Demander un devis
+          </a>
+          <a href="tel:+33756858567" class="group bg-white/10 hover:bg-white/20 px-8 py-4 rounded-lg inline-flex items-center font-semibold transition-all">
+            <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            +33 07 56 85 85 67
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
